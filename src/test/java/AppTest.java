@@ -39,8 +39,8 @@ public class AppTest
         System.out.println("p2 is"+p2.toString());
         System.out.println("distance is"+p1.distance(p2));
     }
-
     private static List<Map<String, Object>> polygon = new ArrayList<>();
+
     @BeforeAll
     public static void buildArea1(){
         Map<String, Object> point1 = new HashMap<>();
@@ -192,5 +192,6 @@ public class AppTest
         System.out.println("current:" + System.currentTimeMillis());
         //1613819250149 - 1613819250142
     }
+
 }
 
