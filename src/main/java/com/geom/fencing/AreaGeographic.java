@@ -8,24 +8,24 @@ import static com.geom.fencing.PolygonAlgorithm.*;
 
 public class AreaGeographic {
     //<name, graph>
-    private static final Map<String,GeneralPath> areaGeographic;
+    private static final Map<String,GeneralPath> areasGeoGraph;
     static {
-        areaGeographic = new HashMap<>();
+        areasGeoGraph = new HashMap<>();
     }
 
     public static void buildGeoArea(String areaName,List<Map<String, Object>> polygonPoints){
         List<Point2D.Double> geoPolygon = buildPolygon(polygonPoints);
         GeneralPath graph = buildGraph(geoPolygon);
-        areaGeographic.put(areaName,graph);
+        areasGeoGraph.put(areaName,graph);
     }
 
     public static String acquireAreaOfPoint(double pointX, double pointY){
-        if (areaGeographic.isEmpty()){
+        if (areasGeoGraph.isEmpty()){
             System.out.println("Please build geo area first.");
             return EMPTY_;
         }
         Point2D.Double point = buildPoint(pointX,pointY);
-        for (Map.Entry<String, GeneralPath> area : areaGeographic.entrySet()) {
+        for (Map.Entry<String, GeneralPath> area : areasGeoGraph.entrySet()) {
             String name = area.getKey();
             GeneralPath p = area.getValue();
             if (p.contains(point)){
@@ -37,12 +37,12 @@ public class AreaGeographic {
 
     public static ArrayList<String> acquireAreasOfPoint(double pointX, double pointY){
         ArrayList<String> areas = new ArrayList<>();
-        if (areaGeographic.isEmpty()){
+        if (areasGeoGraph.isEmpty()){
             System.out.println("Please build geo area first.");
             return areas;
         }
         Point2D.Double point = buildPoint(pointX,pointY);
-        areaGeographic.forEach((name, graph) ->{
+        areasGeoGraph.forEach((name, graph) ->{
             if (graph.contains(point)){
                 areas.add(name);
             }
