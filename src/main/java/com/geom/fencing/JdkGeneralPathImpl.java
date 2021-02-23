@@ -12,8 +12,8 @@ public class JdkGeneralPathImpl implements PolygonAlgorithm {
     @Override
     public boolean isPointInPolygon(double pointX, double pointY,
                                     List<Map<String, Object>> polygon) {
-        Point2D.Double       geoPoint   = GeoAreaPolygon.buildPoint(pointX, pointY);
-        List<Point2D.Double> geoPolygon = GeoAreaPolygon.buildPolygon(polygon);
+        Point2D.Double       geoPoint   = AreaGeographic.buildPoint(pointX, pointY);
+        List<Point2D.Double> geoPolygon = AreaGeographic.buildPolygon(polygon);
         return isPointInPolygon(geoPoint, geoPolygon);
     }
 
@@ -34,7 +34,7 @@ public class JdkGeneralPathImpl implements PolygonAlgorithm {
     }
 
     private boolean isPointInPolygon(Point2D.Double point, List<Point2D.Double> polygon) {
-        GeneralPath graph = GeoAreaPolygon.buildGraph(polygon);
+        GeneralPath graph = AreaGeographic.buildGraph(polygon);
         return graph.contains(point);
     }
 

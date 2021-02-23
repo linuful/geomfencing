@@ -6,26 +6,26 @@ import java.util.*;
 
 import static com.geom.fencing.PolygonAlgorithm.*;
 
-public class GeoAreaPolygon {
+public class AreaGeographic {
     //<name, graph>
-    private static final Map<String,GeneralPath> areaPolygons;
+    private static final Map<String,GeneralPath> areaGeographic;
     static {
-        areaPolygons = new HashMap<>();
+        areaGeographic = new HashMap<>();
     }
 
     public static void buildGeoArea(String areaName,List<Map<String, Object>> polygonPoints){
         List<Point2D.Double> geoPolygon = buildPolygon(polygonPoints);
         GeneralPath graph = buildGraph(geoPolygon);
-        areaPolygons.put(areaName,graph);
+        areaGeographic.put(areaName,graph);
     }
 
     public static String acquireAreaOfPoint(double pointX, double pointY){
-        if (areaPolygons.isEmpty()){
+        if (areaGeographic.isEmpty()){
             System.out.println("Please build geo area first.");
             return EMPTY_;
         }
         Point2D.Double point = buildPoint(pointX,pointY);
-        for (Map.Entry<String, GeneralPath> area : areaPolygons.entrySet()) {
+        for (Map.Entry<String, GeneralPath> area : areaGeographic.entrySet()) {
             String name = area.getKey();
             GeneralPath p = area.getValue();
             if (p.contains(point)){
@@ -37,12 +37,12 @@ public class GeoAreaPolygon {
 
     public static ArrayList<String> acquireAreasOfPoint(double pointX, double pointY){
         ArrayList<String> areas = new ArrayList<>();
-        if (areaPolygons.isEmpty()){
+        if (areaGeographic.isEmpty()){
             System.out.println("Please build geo area first.");
             return areas;
         }
         Point2D.Double point = buildPoint(pointX,pointY);
-        areaPolygons.forEach((name,graph) ->{
+        areaGeographic.forEach((name, graph) ->{
             if (graph.contains(point)){
                 areas.add(name);
             }
@@ -65,15 +65,15 @@ public class GeoAreaPolygon {
     }
 
     public static GeneralPath buildGraph(List<Point2D.Double> polygon){
-        GeneralPath p = new GeneralPath();
+        GeneralPath graph = new GeneralPath();
         Point2D.Double first = polygon.get(0);
-        p.moveTo(first.x, first.y);
+        graph.moveTo(first.x, first.y);
         polygon.remove(0);
         for (Point2D.Double pg : polygon) {
-            p.lineTo(pg.x, pg.y);
+            graph.lineTo(pg.x, pg.y);
         }
-        p.lineTo(first.x, first.y);
-        p.closePath();
-        return p;
+        graph.lineTo(first.x, first.y);
+        graph.closePath();
+        return graph;
     }
 }

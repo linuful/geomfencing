@@ -1,4 +1,4 @@
-import com.geom.fencing.GeoAreaPolygon;
+import com.geom.fencing.AreaGeographic;
 import com.geom.fencing.JdkGeneralPathImpl;
 import com.geom.fencing.PolygonAlgorithm;
 import org.junit.jupiter.api.BeforeAll;
@@ -83,7 +83,7 @@ public class AppTest
         point8.put(LNG_,120.192981);
         point8.put(LAT_,30.281872);
         polygon.add(point8);
-        GeoAreaPolygon.buildGeoArea("Area1",polygon);
+        AreaGeographic.buildGeoArea("Area1",polygon);
     }
 
     @BeforeAll
@@ -129,7 +129,7 @@ public class AppTest
         point8.put(LNG_,120.213749);
         point8.put(LAT_,30.281872);
         polygon.add(point8);
-        GeoAreaPolygon.buildGeoArea("Area2",polygon);
+        AreaGeographic.buildGeoArea("Area2",polygon);
     }
     /**
      * 计算是否在某个多边形内
@@ -176,19 +176,19 @@ public class AppTest
 
         System.out.println("current:" + System.currentTimeMillis());
         System.out.printf("\n1. %f,%f in Area: %s.\n",tx1,ty1,
-                GeoAreaPolygon.acquireAreaOfPoint(tx1,ty1));
+                AreaGeographic.acquireAreaOfPoint(tx1,ty1));
         System.out.printf("\n2. %f,%f in Area: %s.\n",tx2,ty2,
-                GeoAreaPolygon.acquireAreaOfPoint(tx2,ty2));
+                AreaGeographic.acquireAreaOfPoint(tx2,ty2));
         System.out.printf("\n3. %f,%f in Area: %s.\n",tx3,ty3,
-                GeoAreaPolygon.acquireAreaOfPoint(tx3,ty3));
+                AreaGeographic.acquireAreaOfPoint(tx3,ty3));
         System.out.printf("\n4. %f,%f in Area: %s.\n",tx4,ty4,
-                GeoAreaPolygon.acquireAreaOfPoint(tx4,ty4));
+                AreaGeographic.acquireAreaOfPoint(tx4,ty4));
         System.out.printf("\n5. %f,%f in Area: %s.\n",tx5,ty5,
-                GeoAreaPolygon.acquireAreaOfPoint(tx5,ty5));
+                AreaGeographic.acquireAreaOfPoint(tx5,ty5));
         System.out.printf("\n6. %f,%f in Area: %s.\n",tx6,ty6,
-                GeoAreaPolygon.acquireAreaOfPoint(tx6,ty6));
+                AreaGeographic.acquireAreaOfPoint(tx6,ty6));
         System.out.printf("\n7. %f,%f in Area: %s.\n",tx7,ty7,
-                GeoAreaPolygon.acquireAreaOfPoint(tx7,ty7));
+                AreaGeographic.acquireAreaOfPoint(tx7,ty7));
         System.out.println("current:" + System.currentTimeMillis());
         //1613819250149 - 1613819250142
     }
