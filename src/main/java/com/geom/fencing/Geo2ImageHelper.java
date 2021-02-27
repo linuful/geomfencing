@@ -17,7 +17,7 @@ import javax.imageio.ImageIO;
  * @author
  */
 public class Geo2ImageHelper {
-    // {"type":"Polygon","coordinates":[[[108.80069129,18.5200639],[108.80212735,18.51905788],[108.80250244,18.51966251],[108.80097529,18.52047037],[108.80093242,18.52042465],[108.80069129,18.5200639]]]}}]
+    // {"type":"Polygon","coordinates":[[[108.80069129,18.5200639],[108.80212735,18.51905788],[108.80250244,18.51966251],[108.80097529,18.52047037],[108.80093242,18.52042465],[108.80069129,18.5200639]]]}
     private int imageWidthHeight = 1000;
     private List<double[]> coordinates;
     private Color color;
@@ -83,7 +83,10 @@ public class Geo2ImageHelper {
                 x_pianyi = (int) ((imageWidthHeight / 2 - (int) (t1 * xishu/2)) + 1);
             }
         }
+
         {// MB 开始画图
+            double[] firstC = coordinates.get(0);
+            coordinates.add(firstC);
             double[] tmpPoint = null;
             for (double[] d : coordinates) {
                 if (tmpPoint == null) {

@@ -1,10 +1,16 @@
 import com.geom.fencing.AreaGeographic;
+import com.geom.fencing.Geo2ImageHelper;
 import com.geom.fencing.JdkGeneralPathImpl;
 import com.geom.fencing.PolygonAlgorithm;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.awt.*;
 import java.awt.geom.Point2D;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -84,6 +90,20 @@ public class AppTest
         point8.put(LAT_,30.281872);
         polygon.add(point8);
         AreaGeographic.buildGeoArea("Area1",polygon);
+
+
+        try {
+            List<double[]> coordinates = AreaGeographic.buildCoordinates(polygon);
+            FileOutputStream fos = null;
+            fos = new FileOutputStream(new File("aaaa.jpg"));
+            Geo2ImageHelper h = new Geo2ImageHelper(1000, coordinates, Color.RED, fos);
+            h.draw();
+            fos.flush();
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @BeforeAll
@@ -130,6 +150,21 @@ public class AppTest
         point8.put(LAT_,30.281872);
         polygon.add(point8);
         AreaGeographic.buildGeoArea("Area2",polygon);
+
+
+        try {
+            List<double[]> coordinates = AreaGeographic.buildCoordinates(polygon);
+            FileOutputStream fos = null;
+            fos = new FileOutputStream(new File("bbbb.jpg"));
+            Geo2ImageHelper h = new Geo2ImageHelper(1000, coordinates, Color.RED, fos);
+            h.draw();
+            fos.flush();
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
     /**
      * 计算是否在某个多边形内

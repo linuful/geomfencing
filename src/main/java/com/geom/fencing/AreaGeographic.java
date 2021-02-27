@@ -76,4 +76,15 @@ public class AreaGeographic {
         graph.closePath();
         return graph;
     }
+
+
+    public static List<double[]> buildCoordinates(List<Map<String, Object>> polygonPoints){
+        List<double[]> coordinates = new ArrayList<>();
+        for (Map<String, Object> map : polygonPoints) {
+            double lng = Double.parseDouble(Objects.toString(map.get(LNG_)));
+            double lat = Double.parseDouble(Objects.toString(map.get(LAT_)));
+            coordinates.add(new double[]{lng,lat});
+        }
+        return coordinates;
+    }
 }
