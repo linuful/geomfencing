@@ -134,49 +134,5 @@ public class Geo2ImageHelper {
         g.dispose();
         ImageIO.write(image, "JPG", os);
     }
-
-    public static void main(String[] args) {
-        try {
-            {
-                List<double[]> c = new ArrayList<>();
-                c.add(new double[]{108.80069129d, 18.5200639d});
-                c.add(new double[]{108.80212735D, 18.51905788D});
-                c.add(new double[]{108.80250244D, 18.51966251D});
-                c.add(new double[]{108.80097529D, 18.52047037D});
-                c.add(new double[]{108.80093242D, 18.52042465D});
-                c.add(new double[]{108.80069129D, 18.5200639D});
-                FileOutputStream fos = new FileOutputStream(new File("aaaa.jpg"));
-                Geo2ImageHelper h = new Geo2ImageHelper(1000, c, Color.RED, fos);
-                h.draw();
-                fos.flush();
-                fos.close();
-            }
-            {
-                //[108.79853093,18.52219834],
-                List<double[]> c = new ArrayList<>();
-                c.add(new double[]{108.79898037,18.52201225});
-                c.add(new double[]{108.79989549,18.52330581});
-                c.add(new double[]{108.80028934,18.52387232});
-                c.add(new double[]{108.80034694,18.52401966});
-                c.add(new double[]{108.79997587,18.52430799});
-                c.add(new double[]{108.79974541,18.52394305});
-                c.add(new double[]{108.79966504,18.52382619});
-                c.add(new double[]{108.79960074,18.52369917});
-                c.add(new double[]{108.79945606,18.52349085});
-                c.add(new double[]{108.79925244,18.52321141});
-                c.add(new double[]{108.79903274,18.52288624});
-                c.add(new double[]{108.79875281,18.52250431});
-                c.add(new double[]{108.79853093,18.52219834});
-                c.add(new double[]{108.79898037,18.52201225});
-                FileOutputStream fos = new FileOutputStream(new File("bbbb.jpg"));
-                Geo2ImageHelper h = new Geo2ImageHelper(1000, c, Color.RED, fos);
-                h.draw();
-                fos.flush();
-                fos.close();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }
 
