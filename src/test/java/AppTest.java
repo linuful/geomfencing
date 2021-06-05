@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -227,6 +226,17 @@ public class AppTest
         System.out.println("current:" + System.currentTimeMillis());
         //1613819250149 - 1613819250142
     }
+
+
+    /**
+     * 测试对象内存布局
+     */
+    @Test
+    public void test4(){
+        Object obj = new Object();
+        //System.out.println(ClassLayout.parseInstance(obj).toPrintable());
+    }
+
 
 }
 
